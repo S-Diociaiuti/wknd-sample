@@ -1,0 +1,25 @@
+<sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.ImageGridModel"></sly>
+<sly data-sly-set.isConfigured="${properties.label}"></sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='wknd.myimagegridlib'}"/>
+<sly data-sly-set.items=${model.data}></sly>
+
+<div class="cq-placeholder" data-sly-test="${!isConfigured}" data-emptytext="Inserisci"></div>
+<div class="imagegrid" data-sly-test="${isConfigured}">
+    <h1 class="page_title">CSS Image Grid with Hover</h1>
+
+    <div class="row">
+        <div class="container" data-sly-list="${items}">
+            <div class="test_box box-01 col-xs-6 col-md-4">
+                <div class="inner" style="background-image:url('${item.fileReference @context='styleComment'}')">
+                    <a href="${item.link @extension='html'}" class="test_click">
+                        <div class="flex_this">
+                            <h1 class="test_title">${item.title}</h1>
+                            <span class="test_link">${properties.label}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
