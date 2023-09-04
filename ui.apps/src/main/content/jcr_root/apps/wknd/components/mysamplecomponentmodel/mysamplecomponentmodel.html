@@ -1,0 +1,31 @@
+<sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.MySampleComponentModel"></sly>
+<sly data-sly-set.isConfigured="${model.title || model.description || model.fileReferenceDialog}"></sly>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='wknd.myfirstpageclientlib'}"/>
+
+<div class="cq-placeholder" data-sly-test="${!isConfigured}" data-emptytext="Inserisci"></div>
+<div data-sly-test="${isConfigured}">
+    <div data-sly-test="${model.title}">
+        <p>${model.title}</p>
+    </div>
+    <div data-sly-test="${model.description}">
+        ${model.description @context="html"}
+    </div>
+    <img data-sly-test="${model.fileReferenceDialog}" src="${model.fileReferenceDialog}" alt="My Sample Image">
+
+    <div class="servlet-response">
+
+            <h3>First Name</h3>
+            <h3>Last Name</h3>
+            <h3>Email</h3>
+
+            <input type="text" class="firstName">
+            <input type="text" class="lastName">
+            <input type="email" class="email">
+            <button id="mandastaservlet" value="submit">Manda Sta Servlet</button>
+    </div>
+
+    <div class="top-banner">
+        <a href="${properties.link || pageProperties.link}" target="_blank">${properties.descrizione || pageProperties.descrizione}<span>${properties.label || pageProperties.label}</span></a>
+    </div>
+</div>

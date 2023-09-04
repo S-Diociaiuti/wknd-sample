@@ -13,8 +13,50 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */-->
+
 <div class="cmp-helloworld" data-cmp-is="helloworld">
-    <h2 class="cmp-helloworld__title">Hello World Component</h2>
+    <h2 class="cmp-helloworld__title">Hello World Comp</h2>
+    <div data-sly-test="${properties.text}">
+        <p>${properties.text}</p>
+    </div>
+    <p>${'Edit Group' @i18n, locale = 'es'}</p>
+    <p>${'My {0} is beautiful' @format=properties.text}</p>
+    <sly data-sly-use.time="java.util.Date"></sly>
+    <p>${'dd MMMM yyyy' @format=time, timezone='UTC'}</p>
+    <p>${'#,###.00' @format='1225'}</p>
+    <p>${['uno', 'due', 'tre'] @ join='; '}</p>
+    <a class="quellochevuoi" style="color:red">click here</a>
+    <p>${pageProperties.jcr:title}</p>
+    <p>${currentPage.name}</p>
+    <p>${resource.name}</p>
+    <p data-sly-element="${'h3'}">${resource.path}</p>
+    <p>${'Add Details' @i18n, locale = 'it'}</p>
+    <div data-sly-test="${wcmmode.edit}">
+        In edit mode
+        <div data-sly-resource="${@ resourceType='wcm/foundation/components/parsys'}"></div>
+    </div>
+    <div data-sly-test="${wcmmode.disabled}">
+        Not in edit mode
+        <div data-sly-resource="${@ resourceType='/apps/wknd/components/title'}"></div>
+    </div>
+    <ul data-sly-list="${currentPage.parent.listChildren}">
+        <li>
+            <a href="${item.path @ extension='html'}">${item.name}</a>
+        </li>
+    </ul>
+
+    <template data-sly-template.templ="${@ text, res}">
+        <div data-sly-unwrap="${wcmmode.disabled}">
+            <p>${[text,'name is', res.name] @ join=' '}</p>
+            <p>${'{0} path is {1}' @format=[text, res.path]}</p>
+        </div>
+    </template>
+    <sly data-sly-call="${templ @ text = 'The resource', res = resource}"></sly>
+
+    <sly data-sly-set.created="${resource.jcr:created}"></sly>
+    <p>jcr:created date is ${'YYYY MM dd' @format=created} created by ${properties.jcr:createdBy}</p>
+    <sly data-sly-set.lastModified="${properties.jcr:lastModified}"></sly>
+    <p>jcr:lastModified date is ${'YYYY MM dd hh:mm' @format=lastModified} created by ${properties.jcr:createdBy}</p>
     <div class="cmp-helloworld__item" data-sly-test="${properties.text}">
         <p class="cmp-helloworld__item-label">Text property:</p>
         <pre class="cmp-helloworld__item-output" data-cmp-hook-helloworld="property">${properties.text}</pre>

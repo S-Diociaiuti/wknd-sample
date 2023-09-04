@@ -10,7 +10,7 @@
     <filter root="/content/experience-fragments/wknd"/>
 
     <!-- Force Policy and Template Updates -->
-    <filter root="/conf/wknd/settings/wcm" />
+    <filter root="/conf/wknd/settings/wcm" mode="merge"/>
     <filter root="/conf/wknd/settings/cloudconfigs" mode="merge" />
     <filter root="/conf/wknd/settings/cloudsettings" mode="merge" />
 

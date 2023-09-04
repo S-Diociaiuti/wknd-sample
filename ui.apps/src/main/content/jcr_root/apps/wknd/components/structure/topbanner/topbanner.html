@@ -1,0 +1,10 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='wknd.myesercizioheaderclientlib'}"/>
+<sly data-sly-set.isConfigured="${properties.descrizione || pageProperties.descrizione}"></sly>
+
+<div class="cq-placeholder" data-sly-test="${!isConfigured}" data-emptytext="Inserisci"></div>
+<div class="top-banner" data-sly-test="${isConfigured}">
+    <a href="${properties.link || pageProperties.link @extension='html'}" target="_blank">
+        ${properties.descrizione || pageProperties.descrizione}
+        <span>${properties.label || pageProperties.label}</span></a>
+</div>

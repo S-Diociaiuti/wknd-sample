@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Properties"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <accordion
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                            composite="{Boolean}true"
+                            fieldLabel="News">
+                        <field
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                name="./multifield">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <color
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                emptyText="Select a color for the texts"
+                                                fieldLabel="Color"
+                                                name="./color">
+                                            <items jcr:primaryType="cq:WidgetCollection">
+                                                <option1
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Black"
+                                                        value="black"/>
+                                                <option2
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="White"
+                                                        value="white"/>
+                                            </items>
+                                        </color>
+                                        <title
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Title"
+                                                name="./title"/>
+                                        <description
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Description"
+                                                name="./description"/>
+                                        <file
+                                                allowUpload="{Boolean}false"
+                                                granite:class="cmp-image__editor-file-upload"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                class="cq-droptarget"
+                                                enableNextGenDynamicMedia="{Boolean}true"
+                                                fileNameParameter="./fileNameDialog"
+                                                fileReferenceParameter="./fileReferenceDialog"
+                                                mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                name="./file"/>
+                                    </items>
+                                </column>
+                            </items>
+                        </field>
+                    </accordion>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>
+

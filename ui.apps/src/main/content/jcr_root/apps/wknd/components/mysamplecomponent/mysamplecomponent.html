@@ -1,0 +1,12 @@
+<sly data-sly-set.isConfigured="${properties.title || properties.description || properties.fileReferenceDialog}"></sly>
+
+<div class="cq-placeholder" data-sly-test="${!isConfigured}" data-emptytext="Inseirisci"></div>
+<div data-sly-test="${isConfigured}">
+    <div data-sly-test="${properties.title}" >
+        <p>${properties.title}</p>
+    </div>
+    <div data-sly-test="${properties.description}">
+        ${properties.description @context="html"}
+    </div>
+    <img data-sly-test="${properties.fileReferenceDialog}" src="${properties.fileReferenceDialog}" alt="My Sample Image">
+</div>

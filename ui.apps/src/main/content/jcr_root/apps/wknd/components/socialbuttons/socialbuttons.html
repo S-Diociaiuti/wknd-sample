@@ -1,0 +1,12 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.all @ categories='wknd.myfirstpageclientlib'}"/>
+<sly data-sly-set.isConfigured="${resource.hasChildren}"></sly>
+<sly data-sly-use.model="com.adobe.aem.guides.wknd.core.models.SocialButtonsModel"></sly>
+<sly data-sly-set.items="${model.multiField}"></sly>
+
+<div class="cq-placeholder" data-sly-test="${!isConfigured}" data-emptytext="Inserisci"></div>
+<div data-sly-test="${isConfigured}" data-sly-list="${items}">
+    <a class="btn btn-primary" style="background-color:${item.color @context='styleToken'}" href="${item.link @extension='html'}" role="button"
+    ><i class="fab ${item.icon}"></i
+    ></a>
+</div>
